@@ -2,7 +2,7 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import React, { FC, useState } from 'react';
-import { Alert, Image, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, Linking, Text, TouchableOpacity, View } from 'react-native';
 
 const ImageUploader: FC = () => {
   const [imageUri, setImageUri] = useState<string | null>(null);
@@ -14,13 +14,34 @@ const ImageUploader: FC = () => {
 
   // Request permissions for both camera and gallery
   const requestPermissions = async () => {
-    const cameraStatus = await ImagePicker.requestCameraPermissionsAsync();
-    const mediaStatus = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    const cameraStatus = await ImagePicker.getCameraPermissionsAsync();
+    const mediaStatus = await ImagePicker.getMediaLibraryPermissionsAsync();
 
-    if (cameraStatus.status !== 'granted' || mediaStatus.status !== 'granted') {
+    // If already denied permanently
+    if (cameraStatus.canAskAgain === false || mediaStatus.canAskAgain === false) {
+      Alert.alert(
+        'Permission required',
+        'Please go to your device settings and enable camera and gallery access for this app.',
+        [
+          { text: 'Cancel', style: 'cancel' },
+          {
+            text: 'Open Settings',
+            onPress: () => Linking.openSettings(),
+          },
+        ]
+      );
+      return false;
+    }
+
+    // Otherwise request permissions
+    const requestCamera = await ImagePicker.requestCameraPermissionsAsync();
+    const requestMedia = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+    if (requestCamera.status !== 'granted' || requestMedia.status !== 'granted') {
       Alert.alert('Permission required', 'We need access to camera and gallery');
       return false;
     }
+
     return true;
   };
 
