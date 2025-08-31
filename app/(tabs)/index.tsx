@@ -1,10 +1,10 @@
 import { Image } from 'expo-image';
 
 import { AICameraIcon } from '@/components/AICameraIcon';
+import Divider from '@/components/Divider';
+import ImageUploader from '@/components/ImageUploader';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-
+import { TextSection } from '@/components/TextSection';
 import styles from '../styles/home.styles';
 
 export default function HomeScreen() {
@@ -17,36 +17,43 @@ export default function HomeScreen() {
           style={styles.reactLogo}
         />
       }>
+
       {/* Welcome Section */}
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome to Neura Lens</ThemedText>
+      <TextSection type="title" text="Welcome to NeuraLens" styles={styles}>
         <AICameraIcon />
-      </ThemedView>
+      </TextSection>
 
       {/* Step 1: Capture/Upload */}
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Capture or Upload</ThemedText>
-        <ThemedText>
-          Take a photo with your camera or upload an image from your gallery to get started.
-        </ThemedText>
-      </ThemedView>
+      <TextSection
+        styles={styles}
+        type="subtitle"
+        text="Step 1: Capture or Upload"
+        description="Take a photo with your camera or upload an image from your gallery to get started."
+      />
 
       {/* Step 2: AI Analysis */}
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: AI Analysis</ThemedText>
-        <ThemedText>
-          NeuraLens will process your image using cutting-edge AI models to detect, analyze, and
-          interpret key features in real-time.
-        </ThemedText>
-      </ThemedView>
+      <TextSection
+        styles={styles}
+        type="subtitle"
+        text="Step 2: AI Analysis"
+        description="NeuraLens will process your image using cutting-edge AI models to detect, analyze, and interpret key features in real-time."
+      />
 
       {/* Step 3: Insights */}
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get Insights</ThemedText>
-        <ThemedText>
-          Receive instant insights and actionable information, right at your fingertips.
-        </ThemedText>
-      </ThemedView>
+      <TextSection
+        styles={styles}
+        type="subtitle"
+        text="Step 3: Get Insights"
+        description="Receive instant insights and actionable information, right at your fingertips."
+      />
+
+      <Divider />
+
+      {/* Step 4: Image Picker */}
+      <TextSection type="subtitle" text="Pick an Image" />
+      <TextSection styles={styles}>
+        <ImageUploader />
+      </TextSection>
 
       {/* Developer Tools (keep for dev mode only) */}
       {/* {__DEV__ && (

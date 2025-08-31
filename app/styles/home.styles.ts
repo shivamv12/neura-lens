@@ -4,7 +4,9 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    justifyContent: 'flex-start',
+    flexWrap: 'wrap', // allow text to wrap instead of pushing icon
+    gap: 8, // for spacing, or use margin
   },
   stepContainer: {
     gap: 8,
