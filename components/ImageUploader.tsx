@@ -13,40 +13,36 @@ const ImageUploader: FC = () => {
   // };
 
   // Request permissions for both camera and gallery
-  const requestPermissions = async () => {
+  const requestCameraPermission = async () => {
     const cameraStatus = await ImagePicker.getCameraPermissionsAsync();
+    if (cameraStatus.canAskAgain) {
+      const request = await ImagePicker.requestCameraPermissionsAsync();
+      return request.status === 'granted';
+    }
+    Alert.alert(
+      'Permission required',
+      'Please enable camera in Settings.',
+      [{ text: 'Open Settings', onPress: () => Linking.openSettings() }]
+    );
+    return false;
+  };
+
+  const requestMediaPermission = async () => {
     const mediaStatus = await ImagePicker.getMediaLibraryPermissionsAsync();
-
-    // If already denied permanently
-    if (cameraStatus.canAskAgain === false || mediaStatus.canAskAgain === false) {
-      Alert.alert(
-        'Permission required',
-        'Please go to your device settings and enable camera and gallery access for this app.',
-        [
-          { text: 'Cancel', style: 'cancel' },
-          {
-            text: 'Open Settings',
-            onPress: () => Linking.openSettings(),
-          },
-        ]
-      );
-      return false;
+    if (mediaStatus.canAskAgain) {
+      const request = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      return request.status === 'granted';
     }
-
-    // Otherwise request permissions
-    const requestCamera = await ImagePicker.requestCameraPermissionsAsync();
-    const requestMedia = await ImagePicker.requestMediaLibraryPermissionsAsync();
-
-    if (requestCamera.status !== 'granted' || requestMedia.status !== 'granted') {
-      Alert.alert('Permission required', 'We need access to camera and gallery');
-      return false;
-    }
-
-    return true;
+    Alert.alert(
+      'Permission required',
+      'Please enable gallery access in Settings.',
+      [{ text: 'Open Settings', onPress: () => Linking.openSettings() }]
+    );
+    return false;
   };
 
   const pickImageFromGallery = async () => {
-    const hasPermission = await requestPermissions();
+    const hasPermission = await requestMediaPermission();
     if (!hasPermission) return;
 
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -58,7 +54,7 @@ const ImageUploader: FC = () => {
   };
 
   const takePhotoWithCamera = async () => {
-    const hasPermission = await requestPermissions();
+    const hasPermission = await requestCameraPermission();
     if (!hasPermission) return;
 
     const result = await ImagePicker.launchCameraAsync({
