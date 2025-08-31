@@ -22,7 +22,7 @@ const ImageUploader: FC = () => {
     Alert.alert(
       'Permission required',
       'Please enable camera in Settings.',
-      [{ text: 'Open Settings', onPress: () => Linking.openSettings() }]
+      [{ text: 'Cancel', style: 'cancel' }, { text: 'Open Settings', onPress: () => Linking.openSettings() }]
     );
     return false;
   };
@@ -36,7 +36,7 @@ const ImageUploader: FC = () => {
     Alert.alert(
       'Permission required',
       'Please enable gallery access in Settings.',
-      [{ text: 'Open Settings', onPress: () => Linking.openSettings() }]
+      [{ text: 'Cancel', style: 'cancel' }, { text: 'Open Settings', onPress: () => Linking.openSettings() }]
     );
     return false;
   };

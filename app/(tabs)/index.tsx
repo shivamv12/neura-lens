@@ -19,7 +19,7 @@ export default function HomeScreen() {
       }>
 
       {/* Welcome Section */}
-      <TextSection type="title" text="Welcome to NeuraLens" styles={styles}>
+      <TextSection type="title" text="Welcome to Neura Lens" styles={styles}>
         <AICameraIcon />
       </TextSection>
 
