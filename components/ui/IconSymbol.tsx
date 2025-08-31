@@ -1,11 +1,11 @@
 // Fallback for using MaterialIcons on Android and web.
 
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { SymbolWeight, SymbolViewProps } from 'expo-symbols';
+import { SymbolWeight } from 'expo-symbols';
 import { ComponentProps } from 'react';
 import { OpaqueColorValue, type StyleProp, type TextStyle } from 'react-native';
 
-type IconMapping = Record<SymbolViewProps['name'], ComponentProps<typeof MaterialIcons>['name']>;
+type IconMapping = Record<string, ComponentProps<typeof MaterialIcons>['name']>;
 type IconSymbolName = keyof typeof MAPPING;
 
 /**
@@ -14,10 +14,44 @@ type IconSymbolName = keyof typeof MAPPING;
  * - see SF Symbols in the [SF Symbols](https://developer.apple.com/sf-symbols/) app.
  */
 const MAPPING = {
+  // Navigation
   'house.fill': 'home',
   'paperplane.fill': 'send',
   'chevron.left.forwardslash.chevron.right': 'code',
   'chevron.right': 'chevron-right',
+
+  // User / Account
+  'person.fill': 'person',
+  'person.crop.circle.fill': 'account-circle',
+
+  // Files / Uploads
+  'square.and.arrow.up': 'file-upload',
+  'arrow.up.circle.fill': 'upload',
+  'doc.text.fill': 'description',
+  'folder.fill': 'folder',
+
+  // Success / Confirmation
+  'checkmark.circle.fill': 'check-circle',
+  'checkmark.seal.fill': 'verified',
+
+  // Warnings / Errors
+  'exclamationmark.triangle.fill': 'warning',
+  'exclamationmark.circle.fill': 'error',
+  'xmark.circle.fill': 'cancel',
+
+  // Misc / Actions
+  'trash.fill': 'delete',
+  'pencil': 'edit',
+  'gear': 'settings',
+  'bell.fill': 'notifications',
+  'questionmark.circle.fill': 'help',
+
+  // Lens / Detection
+  'viewfinder': 'photo-camera',      // camera/lens symbol
+  'viewfinder.circle.fill': 'camera-alt', // filled version
+  'magnifyingglass.circle.fill': 'search', // alternative for detection
+  'search': 'search',
+  'search.sparkle': 'star',
 } as IconMapping;
 
 /**

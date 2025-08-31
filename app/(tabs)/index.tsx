@@ -1,10 +1,11 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
+import { AICameraIcon } from '@/components/AICameraIcon';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+
+import styles from '../styles/home.styles';
 
 export default function HomeScreen() {
   return (
@@ -12,64 +13,58 @@ export default function HomeScreen() {
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
+          source={require('@/assets/images/robo-stand.png')}
           style={styles.reactLogo}
         />
       }>
+      {/* Welcome Section */}
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
+        <ThemedText type="title">Welcome to Neura Lens</ThemedText>
+        <AICameraIcon />
       </ThemedView>
+
+      {/* Step 1: Capture/Upload */}
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
+        <ThemedText type="subtitle">Step 1: Capture or Upload</ThemedText>
         <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
+          Take a photo with your camera or upload an image from your gallery to get started.
         </ThemedText>
       </ThemedView>
+
+      {/* Step 2: AI Analysis */}
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
+        <ThemedText type="subtitle">Step 2: AI Analysis</ThemedText>
         <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
+          NeuraLens will process your image using cutting-edge AI models to detect, analyze, and
+          interpret key features in real-time.
         </ThemedText>
       </ThemedView>
+
+      {/* Step 3: Insights */}
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
+        <ThemedText type="subtitle">Step 3: Get Insights</ThemedText>
         <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
+          Receive instant insights and actionable information, right at your fingertips.
         </ThemedText>
       </ThemedView>
+
+      {/* Developer Tools (keep for dev mode only) */}
+      {/* {__DEV__ && (
+        <ThemedView style={styles.stepContainer}>
+          <ThemedText type="subtitle">Developer Tools</ThemedText>
+          <ThemedText>
+            Press{' '}
+            <ThemedText type="defaultSemiBold">
+              {Platform.select({
+                ios: 'cmd + d',
+                android: 'cmd + m',
+                web: 'F12',
+              })}
+            </ThemedText>{' '}
+            to open developer tools.
+          </ThemedText>
+        </ThemedView>
+      )} */}
     </ParallaxScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
