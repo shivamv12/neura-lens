@@ -2,9 +2,10 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   titleContainer: {
+    marginVertical: 12,
     flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+    alignItems: 'center', // 'flex-start',
+    justifyContent: 'center', // 'flex-start',
     flexWrap: 'wrap', // allow text to wrap instead of pushing icon
     gap: 8, // for spacing, or use margin
   },
