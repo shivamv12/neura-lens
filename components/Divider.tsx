@@ -9,6 +9,6 @@ const Divider: FC<{ color?: string; thickness?: number; margin?: number }> = ({
   return <View style={[styles.divider, { borderBottomColor: color, borderBottomWidth: thickness, marginVertical: margin }]} />;
 };
 
-const styles = StyleSheet.create({ divider: { width: '60%', alignSelf: 'center' } });
+const styles = StyleSheet.create({ divider: { width: '100%', alignSelf: 'center' } });
 
 export default Divider;
