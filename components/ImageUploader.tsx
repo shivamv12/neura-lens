@@ -1,16 +1,11 @@
-// import { Image } from 'expo-image';
 import { MaterialIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import React, { FC, useState } from 'react';
-import { Alert, Image, Linking, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Linking, Text, TouchableOpacity, View } from 'react-native';
+import ImageViewer from './ImageViewer';
 
-const ImageUploader: FC = () => {
+const ImageUploader: FC<{ inline?: boolean }> = ({ inline }) => {
   const [imageUri, setImageUri] = useState<string | null>(null);
-
-  // Just a dummy function to simulate picking an image
-  // const pickImage = () => {
-  //   setImageUri('https://i.pinimg.com/736x/39/c1/d2/39c1d2b9c4f9b340c6f58bbca77d6068.jpg'); // placeholder image
-  // };
 
   // Request permissions for both camera and gallery
   const requestCameraPermission = async () => {
@@ -92,7 +87,7 @@ const ImageUploader: FC = () => {
   return (
     <View style={{ alignItems: 'center', marginLeft: 0 }}>
       {/* Buttons in a row */}
-      <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 8 }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 8, marginBottom: 18 }}>
         <TouchableOpacity
           style={{
             flexDirection: 'row',
@@ -124,14 +119,7 @@ const ImageUploader: FC = () => {
         </TouchableOpacity>
       </View>
 
-      {imageUri ? (
-        <Image
-          source={{ uri: imageUri }}
-          style={{ width: 200, height: 200, marginVertical: 20 }}
-        />
-      ) : (
-        <Text style={{ color: '#FFD700', marginVertical: 20 }}>Nothing to process!</Text>
-      )}
+      <ImageViewer imageUri={imageUri} onRemove={() => setImageUri(null)} />
     </View>
   );
 };
