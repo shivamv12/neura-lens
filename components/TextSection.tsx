@@ -15,7 +15,7 @@ const TextSection: FC<TextSectionProps> = ({ type, text, styles, description, di
   return (
     <ThemedView style={[styles?.titleContainer, { flexDirection: direction }, { marginTop: styles?.marginTop ?? 0 }]}>
       {text ? <ThemedText type={type}>{text}</ThemedText> : null}
-      {children ? children : description ? <ThemedText>{description}</ThemedText> : null}
+      {children ? children : description ? <ThemedText style={{ textAlign: "center", justifyContent: "center" }}>{description}</ThemedText> : null}
     </ThemedView>
   );
 };
