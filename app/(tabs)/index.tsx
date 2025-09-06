@@ -1,6 +1,5 @@
 import { Image } from 'expo-image';
 
-import { AICameraIcon } from '@/components/AICameraIcon';
 import Divider from '@/components/Divider';
 import ImageUploader from '@/components/ImageUploader';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -19,9 +18,14 @@ export default function HomeScreen() {
       }>
 
       {/* Welcome Section */}
-      <TextSection type="title" text="Welcome to Neura Lens" styles={styles}>
-        <AICameraIcon />
-      </TextSection>
+      <TextSection type="title" text="Welcome to Neura Lens" styles={styles} />
+
+      {/* Step 0: Image Picker */}
+      <ImageUploader inline />
+
+      {/* Few Icons and Separator */}
+      {/* <Divider /> */}
+      {/* <AICameraIcon /> */}
 
       {/* Step 1: Capture/Upload */}
       <TextSection
@@ -31,15 +35,15 @@ export default function HomeScreen() {
         description="Take a photo with your camera or upload an image from your gallery to get started."
       />
 
-      {/* Step 2: AI Analysis */}
+      {/* Step 2: Text: AI Analysis */}
       <TextSection
         styles={styles}
         type="subtitle"
         text="Step 2: AI Analysis"
-        description="NeuraLens will process your image using cutting-edge AI models to detect, analyze, and interpret key features in real-time."
+        description="Neura Lens will process your image using cutting-edge AI models to detect, analyze, and interpret key features in real-time."
       />
 
-      {/* Step 3: Insights */}
+      {/* Step 3: Text: Insights */}
       <TextSection
         styles={styles}
         type="subtitle"
@@ -48,12 +52,6 @@ export default function HomeScreen() {
       />
 
       <Divider />
-
-      {/* Step 4: Image Picker */}
-      <TextSection type="subtitle" text="Pick an Image" />
-      <TextSection styles={styles}>
-        <ImageUploader />
-      </TextSection>
 
       {/* Developer Tools (keep for dev mode only) */}
       {/* {__DEV__ && (
