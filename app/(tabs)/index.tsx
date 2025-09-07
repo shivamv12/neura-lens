@@ -17,8 +17,8 @@ export default function HomeScreen() {
         />
       }>
 
-      {/* Welcome Section */}
-      <TextSection type="title" text="Welcome to Neura Lens" styles={styles} />
+      {/* Top Heading Section */}
+      <TextSection type="title" text="Neura Lens ✨" direction="row" styles={styles} />
 
       {/* Step 0: Image Picker */}
       <ImageUploader inline />
@@ -31,7 +31,7 @@ export default function HomeScreen() {
       <TextSection
         styles={styles}
         type="subtitle"
-        text="Step 1: Capture or Upload"
+        text="📸  Capture or Upload"
         description="Take a photo with your camera or upload an image from your gallery to get started."
       />
 
@@ -39,7 +39,7 @@ export default function HomeScreen() {
       <TextSection
         styles={styles}
         type="subtitle"
-        text="Step 2: AI Analysis"
+        text="🤖  AI Analysis"
         description="Neura Lens will process your image using cutting-edge AI models to detect, analyze, and interpret key features in real-time."
       />
 
@@ -47,7 +47,7 @@ export default function HomeScreen() {
       <TextSection
         styles={styles}
         type="subtitle"
-        text="Step 3: Get Insights"
+        text="⚙️  Get Insights"
         description="Receive instant insights and actionable information, right at your fingertips."
       />
 

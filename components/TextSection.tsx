@@ -11,11 +11,11 @@ interface TextSectionProps {
   direction?: "row" | "column";
 }
 
-const TextSection: FC<TextSectionProps> = ({ type, text, styles, description, direction, children }) => {
+const TextSection: FC<TextSectionProps> = ({ type, text, styles, description, children, direction = 'column' }) => {
   return (
-    <ThemedView style={[styles?.titleContainer, { flexDirection: direction }, { marginTop: styles?.marginTop ?? 0 }]}>
-      {text ? <ThemedText type={type}>{text}</ThemedText> : null}
-      {children ? children : description ? <ThemedText style={{ textAlign: "center", justifyContent: "center" }}>{description}</ThemedText> : null}
+    <ThemedView style={[ styles?.titleContainer, { flexDirection: direction } ]}>
+      {text && (<ThemedText type={type} style={{ textAlign: 'center' }}>{text}</ThemedText>)}
+      {children ? children : description && (<ThemedText style={{ textAlign: 'center', marginTop: 4 }}>{description}</ThemedText>)}
     </ThemedView>
   );
 };
