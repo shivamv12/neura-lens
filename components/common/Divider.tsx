@@ -1,5 +1,9 @@
+/** Package Imports */
 import React, { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
+
+/** Components/Utils/Styles/Types Imports */
+import { dividerStyles as styles } from './styles.common';
 
 const Divider: FC<{ color?: string; thickness?: number; margin?: number }> = ({
   color = '#ccc',
@@ -8,7 +12,5 @@ const Divider: FC<{ color?: string; thickness?: number; margin?: number }> = ({
 }) => {
   return <View style={[styles.divider, { borderBottomColor: color, borderBottomWidth: thickness, marginVertical: margin }]} />;
 };
-
-const styles = StyleSheet.create({ divider: { width: '100%', alignSelf: 'center' } });
 
 export default Divider;

@@ -1,10 +1,12 @@
+/** Package Imports */
 import { Image } from 'expo-image';
 
-import Divider from '@/components/Divider';
-import ImageUploader from '@/components/ImageUploader';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
+/** Components/Utils/Styles/Types Imports */
+import ImageUploader from '@/components/ImageUploader/ImageUploader';
 import { TextSection } from '@/components/TextSection';
-import styles from '../styles/home.styles';
+import Divider from '@/components/common/Divider';
+import ParallaxScrollView from '@/components/common/ParallaxScrollView';
+import { homeStyles as styles } from './styles.tabs';
 
 export default function HomeScreen() {
   return (

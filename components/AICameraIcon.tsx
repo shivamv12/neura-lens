@@ -1,8 +1,10 @@
+/** Package Imports */
 import { Ionicons } from '@expo/vector-icons';
 import React, { FC } from 'react';
 import { View } from 'react-native';
 
-import styles from './styles/AICameraIcon.styles';
+/** Components/Utils/Styles/Types Imports */
+import { AICameraIconStyles as styles } from './styles.components';
 
 const AICameraIcon: FC = () => {
   return (

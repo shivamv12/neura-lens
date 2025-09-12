@@ -2,7 +2,32 @@ import { Dimensions, StyleSheet } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
-const styles = StyleSheet.create({
+export const ImageUploaderStyles = StyleSheet.create({
+  buttonStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#4A90E2',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderRadius: 8,
+  },
+  buttonText: {
+    color: 'white',
+    marginLeft: 6,
+  },
+  outerViewStyle: {
+    alignItems: "center",
+    marginLeft: 0,
+  },
+  buttonViewBoxStyle: {
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: 8,
+    marginBottom: 18,
+  }
+});
+
+export const ImageViewerStyles = StyleSheet.create({
   imageWrapper: {
     position: 'relative',
     borderWidth: 2,
@@ -45,5 +70,3 @@ const styles = StyleSheet.create({
     height: height * 0.9,
   },
 });
-
-export default styles;

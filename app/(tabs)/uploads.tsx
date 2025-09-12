@@ -1,10 +1,12 @@
+/** Package Imports */
 
-import { Collapsible } from '@/components/Collapsible';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
+/** Components/Utils/Styles/Types Imports */
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import styles from '../styles/uploads.styles';
+import { Collapsible } from '@/components/common/Collapsible';
+import ParallaxScrollView from '@/components/common/ParallaxScrollView';
+import { IconSymbol } from '@/components/common/ui/IconSymbol';
+import { uploadsStyles as styles } from './styles.tabs';
 
 export default function TabTwoScreen() {
   return (

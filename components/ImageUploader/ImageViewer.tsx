@@ -1,8 +1,11 @@
+/** Package Imports */
 import { MaterialIcons } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 import React, { useState } from 'react';
 import { Modal, TouchableOpacity, View } from 'react-native';
-import styles from './styles/ImageViewer.styles';
+
+/** Components/Utils/Styles/Types Imports */
+import { ImageViewerStyles as styles } from './styles.imageUploader';
 
 const ImageViewer: React.FC<{ imageUri: string | null; onRemove?: () => void; }> = ({ imageUri, onRemove }) => {
   const [modalVisible, setModalVisible] = useState(false);

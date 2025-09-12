@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
+export const homeStyles = StyleSheet.create({
   titleContainer: {
     marginVertical: 12,
     flexDirection: 'column',
@@ -33,4 +33,15 @@ const styles = StyleSheet.create({
   },
 });
 
-export default styles;
+export const uploadsStyles = StyleSheet.create({
+  headerImage: {
+    color: '#808080',
+    bottom: -90,
+    left: -35,
+    position: 'absolute',
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+});

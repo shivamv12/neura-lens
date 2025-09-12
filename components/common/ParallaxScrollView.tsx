@@ -1,3 +1,4 @@
+/** Package Imports */
 import type { PropsWithChildren, ReactElement } from 'react';
 import Animated, {
   interpolate,
@@ -6,12 +7,12 @@ import Animated, {
   useScrollViewOffset,
 } from 'react-native-reanimated';
 
+/** Components/Utils/Styles/Types Imports */
 import { ThemedView } from '@/components/ThemedView';
-import { useBottomTabOverflow } from '@/components/ui/TabBarBackground';
+import { useBottomTabOverflow } from '@/components/common/ui/TabBarBackground';
+import { HEADER_HEIGHT } from '@/constants/appConstants';
 import { useColorScheme } from '@/hooks/useColorScheme';
-import styles from './styles/ParallaxScrollView.styles';
-
-const HEADER_HEIGHT = 250;
+import { ParallaxScrollViewStyles as styles } from './styles.common';
 
 type Props = PropsWithChildren<{
   headerImage: ReactElement;
