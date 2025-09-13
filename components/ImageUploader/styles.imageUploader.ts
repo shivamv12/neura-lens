@@ -4,27 +4,48 @@ const { width, height } = Dimensions.get('window');
 
 export const ImageUploaderStyles = StyleSheet.create({
   buttonStyle: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#4A90E2',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#4A90E2",
     paddingVertical: 10,
     paddingHorizontal: 15,
     borderRadius: 8,
   },
   buttonText: {
-    color: 'white',
+    color: "white",
     marginLeft: 6,
+  },
+  buttonDisabled: {
+    backgroundColor: "#6C93D6", // darker blue disabled
+  },
+  buttonTextDisabled: {
+    color: "#F0F4FA", // lighter text
   },
   outerViewStyle: {
     alignItems: "center",
-    marginLeft: 0,
   },
   buttonViewBoxStyle: {
     flexDirection: "row",
     justifyContent: "center",
     gap: 8,
     marginBottom: 18,
-  }
+  },
+  analysisViewBoxStyle: {
+    marginTop: 16,
+    padding: 12,
+    backgroundColor: "#C4DFFF",
+    // backgroundColor: "#E5E7EB",
+    borderRadius: 8,
+  },
+  analysisHeading: {
+    fontWeight: "600",
+    marginBottom: 6,
+  },
+  analysisText: {
+    color: "#344365",
+    textAlign: "justify",
+    padding: 12
+  },
 });
 
 export const ImageViewerStyles = StyleSheet.create({

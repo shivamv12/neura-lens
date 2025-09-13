@@ -20,7 +20,7 @@ export default function HomeScreen() {
       }>
 
       {/* Top Heading Section */}
-      <TextSection type="title" text="Neura Lens ✨" direction="row" styles={styles} />
+      <TextSection type="title" text="NeuraLens ✨" direction="row" styles={styles} />
 
       {/* Step 0: Image Picker */}
       <ImageUploader inline />
@@ -42,7 +42,7 @@ export default function HomeScreen() {
         styles={styles}
         type="subtitle"
         text="🤖  AI Analysis"
-        description="Neura Lens will process your image using cutting-edge AI models to detect, analyze, and interpret key features in real-time."
+        description="NeuraLens will process your image using cutting-edge AI models to detect, analyze, and interpret key features in real-time."
       />
 
       {/* Step 3: Text: Insights */}

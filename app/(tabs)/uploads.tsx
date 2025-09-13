@@ -21,11 +21,11 @@ export default function TabTwoScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">What is Neura Lens ✨</ThemedText>
+        <ThemedText type="title">What is NeuraLens ✨</ThemedText>
       </ThemedView>
 
       <ThemedText>
-        Neura Lens helps you capture, upload, and analyze your images in real-time using AI-powered
+        NeuraLens helps you capture, upload, and analyze your images in real-time using AI-powered
         processing. 🚀
       </ThemedText>
 
@@ -38,7 +38,7 @@ export default function TabTwoScreen() {
 
       <Collapsible title="📸 Capture & Upload">
         <ThemedText>
-          Use the built-in camera or gallery picker to upload images. Neura Lens automatically optimizes
+          Use the built-in camera or gallery picker to upload images. NeuraLens automatically optimizes
           your uploads and prepares them for instant analysis.
         </ThemedText>
       </Collapsible>
@@ -59,7 +59,7 @@ export default function TabTwoScreen() {
 
       <Collapsible title="🌙 Dark Mode Support">
         <ThemedText>
-          Neura Lens automatically adapts to your device theme. Enjoy a seamless experience in both light
+          NeuraLens automatically adapts to your device theme. Enjoy a seamless experience in both light
           and dark modes.
         </ThemedText>
       </Collapsible>

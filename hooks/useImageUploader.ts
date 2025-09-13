@@ -4,12 +4,15 @@ import { useState } from "react";
 import { Alert, Linking } from "react-native";
 
 /** Components/Utils/Styles/Types Imports */
-import { getPresignedUrl, notifyUploadComplete, uploadToS3 } from "../services/imageUploader";
-import { getDeviceMetadata } from "../utils/deviceUtils";
+import { getPresignedUrl, notifyUploadComplete, uploadToS3 } from "@/services/imageUploader";
+import { getDeviceMetadata } from "@/utils/deviceUtils";
+import { parseRawProcessingText } from "@/utils/responseTextParser";
 import { compressImage } from "../utils/imageUtils";
 
 export const useImageUpload = () => {
   const [imageUri, setImageUri] = useState<string | null>(null);
+  const [analysis, setAnalysis] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
 
   const requestPermission = async (type: "camera" | "gallery") => {
     const permission =
@@ -38,6 +41,8 @@ export const useImageUpload = () => {
   };
 
   const pickImage = async (fromCamera = false) => {
+    setAnalysis(null);
+    setImageUri(null);
     const hasPermission = await requestPermission(
       fromCamera ? "camera" : "gallery"
     );
@@ -59,6 +64,7 @@ export const useImageUpload = () => {
         result.assets[0].type === "image"
           ? result.assets[0].mimeType!
           : "image/png";
+
       setImageUri(uri);
       await handleUpload(uri, type);
     }
@@ -66,8 +72,10 @@ export const useImageUpload = () => {
 
   const handleUpload = async (uri: string, type: string) => {
     try {
-      const compressed = await compressImage(uri);
+      setLoading(true);
+      setAnalysis(null);
 
+      const compressed = await compressImage(uri);
       const { preSignedUrl, filename } = await getPresignedUrl(type);
 
       const file = await fetch(compressed.uri);
@@ -76,7 +84,8 @@ export const useImageUpload = () => {
 
       const { deviceId, deviceType, userIp } = await getDeviceMetadata();
 
-      await notifyUploadComplete({
+      // Notify backend and capture its response (with analysis)
+      const response = await notifyUploadComplete({
         filename,
         s3Key: filename,
         size: blob.size,
@@ -87,12 +96,21 @@ export const useImageUpload = () => {
         deviceType,
       });
 
+      // Backend sends analysis on `response.data.data.processedImageDetails`
+      const aiAnalysis = response.data?.data?.processedImageDetails;
+      if (aiAnalysis?.content && typeof aiAnalysis.content === "string") {
+        const { quickExplanation } = parseRawProcessingText(aiAnalysis.content);
+        setAnalysis(quickExplanation);
+      } else setAnalysis("Could not process image!");
+
       Alert.alert("Upload Success", `File uploaded: ${filename}`);
     } catch (err: any) {
       console.error("Upload Error: ", err);
       Alert.alert("Upload Failed", err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
-  return { imageUri, setImageUri, pickImage };
+  return { imageUri, setImageUri, pickImage, analysis, loading };
 };
