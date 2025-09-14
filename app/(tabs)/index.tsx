@@ -42,7 +42,7 @@ const HomeScreen: FC = () => {
       <TextSection
         styles={styles}
         type="subtitle"
-        text="🤖  AI Analysis"
+        text="🔮  AI Analysis"
         description="NeuraLens will process your image using cutting-edge AI models to detect, analyze, and interpret key features in real-time."
       />
 
@@ -50,7 +50,7 @@ const HomeScreen: FC = () => {
       <TextSection
         styles={styles}
         type="subtitle"
-        text="⚙️  Get Insights"
+        text="🧩  Get Insights"
         description="Receive instant insights and actionable information, right at your fingertips."
       />
 

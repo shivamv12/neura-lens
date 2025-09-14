@@ -4,7 +4,7 @@
 
 ## 🚀 Features
 - 📸 **Capture & Upload:** Take photos or select from gallery seamlessly.
-- 🤖 **AI-Powered Analysis:** Get descriptive insights about images, including objects, context, and mood.
+- 🔮 **AI-Powered Analysis:** Get descriptive insights about images, including objects, context, and mood.
 - 🌍 **Cross-Platform:** Works on iOS, Android, and Web without extra configuration.
 - 📦 **Modular & Scalable:** Easy to extend and maintain as the app grows.
 - 🔐 **Secure & Reliable:** Future plans for authentication, pipeline handling, and safe content filtering.
@@ -16,7 +16,7 @@
 - [**React Navigation**](https://reactnavigation.org/) – App routing & navigation  
 - [**Redux**](https://redux.js.org/) / [**Zustand**](https://zustand-demo.pmnd.rs/) (Optional) – State management  
 
-## 🤖 AI Analysis
+## 🔮 AI Analysis
 
 NeuraLens leverages **LLaMA 4 Maverick** via a backend proxy to generate structured insights about uploaded images. The analysis includes:
 

@@ -1,4 +1,5 @@
 /** Package Imports */
+import { FC } from 'react';
 
 /** Components/Utils/Styles/Types Imports */
 import { ThemedText } from '@/components/ThemedText';
@@ -6,7 +7,7 @@ import { ThemedView } from '@/components/ThemedView';
 import { Collapsible } from '@/components/common/Collapsible';
 import ParallaxScrollView from '@/components/common/ParallaxScrollView';
 import { IconSymbol } from '@/components/common/ui/IconSymbol';
-import { FC } from 'react';
+
 import { aboutStyles as styles } from '../styles/styles.tabs';
 
 const About: FC = () => {
@@ -21,21 +22,21 @@ const About: FC = () => {
           style={styles.headerImage}
         />
       }>
+      {/* Title Section */}
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">What is NeuraLens ✨</ThemedText>
       </ThemedView>
 
       <ThemedText>
-        NeuraLens helps you capture, upload, and analyze your images in real-time using AI-powered
-        processing. 🚀
+        NeuraLens helps you capture, upload, and analyze your images in real-time using AI-powered processing. 🧠
       </ThemedText>
 
-      <Collapsible title="📂 Previous Uploads">
-        <ThemedText>
-          View and manage your previously uploaded files. All your images are securely stored and can be
-          accessed anytime.
-        </ThemedText>
-      </Collapsible>
+      {/* ================================= */}
+      {/* Phase 1 - Developed Features      */}
+      {/* ================================= */}
+      <ThemedView style={{ marginTop: 20, marginBottom: 10 }}>
+        <ThemedText type="subtitle">🎯 Current Features (Phase 1)</ThemedText>
+      </ThemedView>
 
       <Collapsible title="📸 Capture & Upload">
         <ThemedText>
@@ -44,7 +45,7 @@ const About: FC = () => {
         </ThemedText>
       </Collapsible>
 
-      <Collapsible title="🤖 AI Processing">
+      <Collapsible title="🔮 AI Processing">
         <ThemedText>
           Once uploaded, our AI engine processes your images to extract insights. Results are displayed in
           a clean and interactive format.
@@ -60,25 +61,61 @@ const About: FC = () => {
 
       <Collapsible title="🌙 Dark Mode Support">
         <ThemedText>
-          NeuraLens automatically adapts to your device theme. Enjoy a seamless experience in both light
-          and dark modes.
+          NeuraLens (for now) automatically adapts to your device theme. Enjoy a seamless experience in both light and dark modes.
         </ThemedText>
       </Collapsible>
 
-      {/* ✅ Content Guidelines */}
-      <Collapsible title="📜 Content Guidelines">
+      {/* ================================= */}
+      {/* Phase 2 - Planned / Coming Soon   */}
+      {/* ================================= */}
+      <ThemedView style={{ marginTop: 20, marginBottom: 10 }}>
+        <ThemedText type="subtitle">🚀 Planned Features (Phase 2)</ThemedText>
+      </ThemedView>
+
+      <Collapsible title="📂 Previous Uploads">
         <ThemedText>
-          To maintain a safe and respectful environment, NeuraLens does not allow uploads containing:
+          Soon, you'll be able to view and manage your previously uploaded files. All your images will be securely stored and accessible anytime.
+        </ThemedText>
+      </Collapsible>
+
+      <Collapsible title="🌙 Manual Dark Mode Switching">
+        <ThemedText>
+          NeuraLens will allow users to manually switch between light and dark modes in addition to the automatic device theme detection.
+        </ThemedText>
+      </Collapsible>
+
+      <Collapsible title="📱 Orientation Support">
+        <ThemedText>
+          NeuraLens will support both portrait and landscape orientations for an optimized viewing experience.
+        </ThemedText>
+      </Collapsible>
+
+      <Collapsible title="⛓️ Batch Reprocessing & Notifications">
+        <ThemedText>
+          Failed image uploads will be automatically reprocessed in batches. Users will receive a push notification when their previously failed images have been successfully re-analyzed.
+        </ThemedText>
+      </Collapsible>
+
+      {/* ================================= */}
+      {/* Content Guidelines (Independent)  */}
+      {/* ================================= */}
+      <ThemedView style={{ marginTop: 20, marginBottom: 10 }}>
+        <ThemedText type="subtitle">🛡️ Content Guidelines</ThemedText>
+      </ThemedView>
+
+      <Collapsible title="📜 Upload Restrictions">
+        <ThemedText>
+          To maintain a safe and respectful environment, NeuraLens blocks uploads containing:
         </ThemedText>
         <ThemedText>{'\n'}• Explicit or sexually suggestive content</ThemedText>
         <ThemedText>• Violent or graphic imagery</ThemedText>
         <ThemedText>• Hate symbols, extremist or discriminatory content</ThemedText>
         <ThemedText>• Illegal activities or harmful content</ThemedText>
         <ThemedText>• Personally identifiable information (sensitive documents, IDs, etc.)</ThemedText>
-        <ThemedText>{'\n'}Please ensure your uploads comply with these guidelines to avoid processing restrictions.</ThemedText>
+        <ThemedText>{'\n'}Ensure your uploads comply with these guidelines to avoid restrictions.</ThemedText>
       </Collapsible>
     </ParallaxScrollView>
   );
-}
+};
 
 export default About;

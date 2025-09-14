@@ -1,11 +1,11 @@
 /** Package Imports */
+import { FC } from 'react';
 
 /** Components/Utils/Styles/Types Imports */
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import ParallaxScrollView from '@/components/common/ParallaxScrollView';
 import { IconSymbol } from '@/components/common/ui/IconSymbol';
-import { FC } from 'react';
 import { uploadsStyles as styles } from '../styles/styles.tabs';
 
 const Uploads: FC = () => {
@@ -20,17 +20,33 @@ const Uploads: FC = () => {
           style={styles.headerImage}
         />
       }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Uploads - Coming Soon 🚀</ThemedText>
+      {/* Container for top content */}
+      <ThemedView style={{ alignItems: 'center', marginTop: 20 }}>
+
+        {/* Title & Subtitle */}
+        <ThemedText type="title">Uploads & Gallery 🗂️</ThemedText>
+        <ThemedText type="subtitle" style={{ marginTop: 12, textAlign: 'center', color: '#888' }}>
+          Coming Soon with next phase
+        </ThemedText>
+
+        {/* Info / Status Section */}
+        <ThemedView style={{ alignItems: 'center', marginTop: 10 }}>
+          <IconSymbol size={120} name="cloud-upload" color="#A0A0A0" />
+          <ThemedText style={{ textAlign: 'center' }}>
+            We’re working hard to bring AI-powered image uploads and management.
+          </ThemedText>
+          <ThemedText style={{ textAlign: 'center', marginTop: 4, color: '#888' }}>
+            All your images will be securely stored and instantly analyzable.
+          </ThemedText>
+        </ThemedView>
+
       </ThemedView>
 
-      <ThemedText style={{ textAlign: 'center', marginVertical: 20 }}>
-        We're working hard to bring you the Uploads & Gallery feature in Phase 2! Stay tuned for AI-powered image management and analysis.
-      </ThemedText>
-
-      <ThemedView style={{ alignItems: 'center', marginTop: 30 }}>
-        <IconSymbol size={120} name="cloud-upload" color="#A0A0A0" />
-        <ThemedText style={{ marginTop: 15 }}>Feature in development</ThemedText>
+      {/* Footer / Note */}
+      <ThemedView style={{ alignItems: 'center', marginVertical: 30 }}>
+        <ThemedText style={{ textAlign: 'center', color: '#888' }}>
+          Stay tuned! Phase 2 is coming soon. Your uploads will be safe, fast, and smart.
+        </ThemedText>
       </ThemedView>
     </ParallaxScrollView>
   );
