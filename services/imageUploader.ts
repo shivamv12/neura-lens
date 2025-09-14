@@ -16,11 +16,13 @@ export const uploadToS3 = async (
   blob: Blob,
   contentType: string | null
 ) => {
-  return axios.put(preSignedUrl, blob, {
+  return fetch(preSignedUrl, {
     headers: {
       "Content-Type": contentType || "application/octet-stream",
       "x-amz-server-side-encryption": "AES256",
     },
+    body: blob,
+    method: "PUT",
   });
 };
 

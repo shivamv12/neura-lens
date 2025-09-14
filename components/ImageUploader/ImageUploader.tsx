@@ -11,7 +11,16 @@ import ImageViewer from "./ImageViewer";
 import { ImageUploaderStyles as styles } from "./styles.imageUploader";
 
 const ImageUploader: FC<{ inline?: boolean }> = () => {
-  const { imageUri, setImageUri, pickImage, analysis, loading } = useImageUpload();
+  const {
+    loading,
+    imageUri,
+    pickImage,
+    setImageUri,
+    quickOverview,
+    detailedContext,
+    isExplicitContent,
+    objectsOrEntities,
+  } = useImageUpload();
 
   return (
     <View style={styles.outerViewStyle}>
@@ -37,12 +46,41 @@ const ImageUploader: FC<{ inline?: boolean }> = () => {
           {/* Water waves Loader */}
           <WaterLoader />
         </>
-      ) : analysis ? (
+      ) : quickOverview ? (
         <>
           {/* Analysis Result */}
           <View style={styles.analysisViewBoxStyle}>
-            <Text style={styles.analysisHeading}>Through Neura's Lens ✨</Text>
-            <Text style={styles.analysisText}>{analysis}</Text>
+            <Text style={styles.analysisHeading}>✨ Through Neura's Lens..</Text>
+            <Text style={styles.analysisText}>{quickOverview}</Text>
+
+            {/* Objects List */}
+            {objectsOrEntities?.length > 0 && (
+              <View style={{ marginTop: 8 }}>
+                <Text style={styles.subHeading}>📌 What Neura Spotted..</Text>
+                {objectsOrEntities.map((obj: string, index: number) => (
+                  <Text key={index} style={styles.listItem}>
+                    • {obj}
+                  </Text>
+                ))}
+              </View>
+            )}
+
+            {/* Detailed Context */}
+            {detailedContext ? (
+              <View style={{ marginTop: 8 }}>
+                <Text style={styles.subHeading}>🌌 Neura's Perspective..</Text>
+                <Text style={styles.analysisText}>{detailedContext}</Text>
+              </View>
+            ) : null}
+
+            {/* Explicit Content Warning */}
+            {isExplicitContent && (
+              <View style={styles.warningBox}>
+                <Text style={styles.warningText}>
+                  ⚠️ This image may contain explicit or sensitive content.
+                </Text>
+              </View>
+            )}
           </View>
         </>
       ) : null}

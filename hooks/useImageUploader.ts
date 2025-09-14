@@ -1,18 +1,30 @@
 /** Package Imports */
 import * as ImagePicker from "expo-image-picker";
 import { useState } from "react";
-import { Alert, Linking } from "react-native";
+import { Linking } from "react-native";
 
 /** Components/Utils/Styles/Types Imports */
 import { getPresignedUrl, notifyUploadComplete, uploadToS3 } from "@/services/imageUploader";
-import { getDeviceMetadata } from "@/utils/deviceUtils";
-import { parseRawProcessingText } from "@/utils/responseTextParser";
+import { parseRawAnalysisJSON } from "@/utils/aiResponseJsonParser";
+import { getDeviceMetadata, showAlertOnDevice } from "@/utils/deviceUtils";
 import { compressImage } from "../utils/imageUtils";
 
 export const useImageUpload = () => {
   const [imageUri, setImageUri] = useState<string | null>(null);
-  const [analysis, setAnalysis] = useState<any>(null);
+  const [quickOverview, setQuickOverview] = useState<string | null>(null);
+  const [objectsOrEntities, setObjectsOrEntities] = useState<string[]>([]);
+  const [detailedContext, setDetailedContext] = useState<string | null>(null);
+  const [isExplicitContent, setIsExplicitContent] = useState<boolean>(false);
   const [loading, setLoading] = useState(false);
+
+  /** Method to clear previous state */
+  const resetState = () => {
+    setQuickOverview(null);
+    setObjectsOrEntities([]);
+    setDetailedContext(null);
+    setIsExplicitContent(false);
+    setImageUri(null);
+  };
 
   const requestPermission = async (type: "camera" | "gallery") => {
     const permission =
@@ -28,21 +40,16 @@ export const useImageUpload = () => {
       return request.status === "granted";
     }
 
-    // Improvement: Common Alert Component
-    Alert.alert(
-      "Permission required",
-      `Please enable ${type} access in Settings.`,
-      [
-        { text: "Cancel", style: "cancel" },
-        { text: "Open Settings", onPress: () => Linking.openSettings() },
-      ]
-    );
+    showAlertOnDevice("Permission required", `Please enable ${type} access in Settings.`, [
+      { text: "Cancel", style: "cancel" },
+      { text: "Open Settings", onPress: () => Linking.openSettings() },
+    ]);
     return false;
   };
 
   const pickImage = async (fromCamera = false) => {
-    setAnalysis(null);
-    setImageUri(null);
+    resetState();
+
     const hasPermission = await requestPermission(
       fromCamera ? "camera" : "gallery"
     );
@@ -50,13 +57,13 @@ export const useImageUpload = () => {
 
     const result = fromCamera
       ? await ImagePicker.launchCameraAsync({
-        mediaTypes: ["images"],
-        quality: 0.8,
-      } as any)
+          mediaTypes: ["images"],
+          quality: 0.8,
+        } as any)
       : await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ["images"],
-        quality: 0.8,
-      } as any);
+          mediaTypes: ["images"],
+          quality: 0.8,
+        } as any);
 
     if (!result.canceled) {
       const uri = result.assets[0].uri;
@@ -73,13 +80,11 @@ export const useImageUpload = () => {
   const handleUpload = async (uri: string, type: string) => {
     try {
       setLoading(true);
-      setAnalysis(null);
 
       const compressed = await compressImage(uri);
       const { preSignedUrl, filename } = await getPresignedUrl(type);
 
-      const file = await fetch(compressed.uri);
-      const blob = await file.blob();
+      const blob = await (await fetch(compressed.uri)).blob();
       await uploadToS3(preSignedUrl, blob, type);
 
       const { deviceId, deviceType, userIp } = await getDeviceMetadata();
@@ -98,19 +103,27 @@ export const useImageUpload = () => {
 
       // Backend sends analysis on `response.data.data.processedImageDetails`
       const aiAnalysis = response.data?.data?.processedImageDetails;
-      if (aiAnalysis?.content && typeof aiAnalysis.content === "string") {
-        const { quickExplanation } = parseRawProcessingText(aiAnalysis.content);
-        setAnalysis(quickExplanation);
-      } else setAnalysis("Could not process image!");
 
-      Alert.alert("Upload Success", `File uploaded: ${filename}`);
+      if (aiAnalysis?.content) {
+        const { quickOverview, objectsOrEntities, detailedContext, isExplicitContent } =
+          parseRawAnalysisJSON(aiAnalysis.content);
+
+        setQuickOverview(quickOverview);
+        setDetailedContext(detailedContext);
+        setObjectsOrEntities(objectsOrEntities || []);
+        setIsExplicitContent(isExplicitContent || false);
+      } else {
+        setQuickOverview("Could not process image!");
+      }
+
+      showAlertOnDevice("Upload Success", `File uploaded: ${filename}`);
     } catch (err: any) {
       console.error("Upload Error: ", err);
-      Alert.alert("Upload Failed", err.message);
+      showAlertOnDevice("Upload Failed", `Occurred error: ${err.message}`);
     } finally {
       setLoading(false);
     }
   };
 
-  return { imageUri, setImageUri, pickImage, analysis, loading };
+  return { imageUri, setImageUri, pickImage, quickOverview, objectsOrEntities, detailedContext, isExplicitContent, loading };
 };

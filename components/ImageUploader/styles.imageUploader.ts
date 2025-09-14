@@ -39,6 +39,7 @@ export const ImageUploaderStyles = StyleSheet.create({
   },
   analysisHeading: {
     fontWeight: "600",
+    // fontSize: 18,
     marginBottom: 6,
   },
   analysisText: {
@@ -46,6 +47,28 @@ export const ImageUploaderStyles = StyleSheet.create({
     textAlign: "justify",
     padding: 12
   },
+  subHeading: {
+    fontSize: 16,
+    fontWeight: "600",
+    marginTop: 6,
+  },
+  listItem: {
+    fontSize: 14,
+    marginLeft: 10,
+    marginTop: 2,
+  },
+  warningBox: {
+    marginTop: 12,
+    padding: 8,
+    borderRadius: 8,
+    backgroundColor: "#ffe5e5",
+  },
+  warningText: {
+    fontSize: 14,
+    color: "#d9534f",
+    fontWeight: "600",
+  },
+
 });
 
 export const ImageViewerStyles = StyleSheet.create({
