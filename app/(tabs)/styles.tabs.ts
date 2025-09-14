@@ -22,7 +22,6 @@ export const homeStyles = StyleSheet.create({
     bottom: 0,
     width: '100%',
     height: '100%',
-    resizeMode: 'cover', // cover scales while preserving aspect ratio
   },
   reactLogoReact: {
     height: 178,

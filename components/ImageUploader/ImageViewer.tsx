@@ -39,7 +39,7 @@ const ImageViewer: React.FC<{ imageUri: string | null; onRemove?: () => void; }>
             <Image
               source={{ uri: imageUri }}
               style={styles.fullscreenImage}
-              resizeMode="contain"
+              contentFit="contain"
             />
           </TouchableOpacity>
         </View>
