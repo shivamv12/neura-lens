@@ -58,37 +58,53 @@ export const ImageUploaderStyles = StyleSheet.create({
     marginTop: 2,
   },
   warningBox: {
-    marginTop: 12,
-    padding: 8,
-    borderRadius: 8,
-    backgroundColor: "#ffe5e5",
+    marginTop: 16,
+    padding: 16,
+    borderRadius: 12,
+    backgroundColor: "#fff4f4",
+    borderWidth: 1,
+    borderColor: "#f5c2c2",
+    alignItems: "center"
+  },
+  warningIcon: {
+    fontSize: 50,
+    marginBottom: 8,
+    color: "#a94442",
   },
   warningText: {
-    fontSize: 14,
-    color: "#d9534f",
-    fontWeight: "600",
+    fontSize: 15,
+    color: "#a94442",
+    fontWeight: "500",
+    textAlign: "center",
+    lineHeight: 22,
   },
-
+  secondaryWarningText: {
+    fontSize: 12,
+    color: "#a94442",
+    marginTop: 12,
+    textAlign: "center",
+    fontStyle: "italic",
+  },
 });
 
-export const ImageViewerStyles = StyleSheet.create({
+export const ImageRendererStyles = StyleSheet.create({
   imageWrapper: {
-    position: 'relative',
+    position: "relative",
     borderWidth: 2,
-    borderColor: '#FFD700',
+    borderColor: "#FFD700",
     borderRadius: 12,
-    overflow: 'hidden',
-    shadowColor: '#000',
+    overflow: "hidden",
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 5,
-    elevation: 5, // for Android shadow
+    elevation: 5,
   },
   cancelButton: {
-    position: 'absolute',
+    position: "absolute",
     top: 5,
     right: 5,
-    backgroundColor: 'rgba(0,0,0,0.6)',
+    backgroundColor: "rgba(0,0,0,0.6)",
     borderRadius: 12,
     padding: 2,
     zIndex: 2,
@@ -98,19 +114,26 @@ export const ImageViewerStyles = StyleSheet.create({
     height: 200,
     borderRadius: 12,
   },
-  noImageText: {
-    color: '#FFD700',
-    marginVertical: 20,
-    fontSize: 16,
+  overlay: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  overlayText: {
+    color: "#fff",
+    marginTop: 6,
+    fontSize: 12,
+    textAlign: "center",
   },
   modalBackground: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.9)',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "rgba(0,0,0,0.9)",
+    justifyContent: "center",
+    alignItems: "center",
   },
   fullscreenImage: {
-    width: width * 0.99,
-    height: height * 0.9,
+    width: "99%",
+    height: "90%",
+    resizeMode: "contain",
   },
 });
