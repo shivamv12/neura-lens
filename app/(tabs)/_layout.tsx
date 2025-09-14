@@ -1,7 +1,7 @@
 /** Package Imports */
 import { MaterialIcons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
-import React from 'react';
+import React, { FC } from 'react';
 import { Platform } from 'react-native';
 
 /** Components/Utils/Styles/Types Imports */
@@ -11,7 +11,7 @@ import TabBarBackground from '@/components/common/ui/TabBarBackground';
 import { Colors } from '@/constants/colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
-export default function TabLayout() {
+const TabLayout: FC = () => {
   const colorScheme = useColorScheme();
 
   return (
@@ -32,17 +32,26 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }: { color: string }) => <MaterialIcons size={28} name="filter-list" color={color} />,
+          title: 'Analyzer',
+          tabBarIcon: ({ color }: { color: string }) => <MaterialIcons size={28} name="image-search" color={color} />,
         }}
       />
       <Tabs.Screen
         name="uploads"
         options={{
           title: 'Uploads',
-          tabBarIcon: ({ color }: { color: string }) => <IconSymbol size={28} name="square.and.arrow.up" color={color} />,
+          tabBarIcon: ({ color }: { color: string }) => <MaterialIcons size={28} name="filter-list" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="about"
+        options={{
+          title: 'About',
+          tabBarIcon: ({ color }: { color: string }) => <IconSymbol size={28} name="viewfinder" color={color} />,
         }}
       />
     </Tabs>
   );
 }
+
+export default TabLayout;

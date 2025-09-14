@@ -6,9 +6,10 @@ import ImageUploader from '@/components/ImageUploader/ImageUploader';
 import { TextSection } from '@/components/TextSection';
 import Divider from '@/components/common/Divider';
 import ParallaxScrollView from '@/components/common/ParallaxScrollView';
-import { homeStyles as styles } from './styles.tabs';
+import { FC } from 'react';
+import { homeStyles as styles } from '../styles/styles.tabs';
 
-export default function HomeScreen() {
+const HomeScreen: FC = () => {
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -75,3 +76,5 @@ export default function HomeScreen() {
     </ParallaxScrollView>
   );
 }
+
+export default HomeScreen;

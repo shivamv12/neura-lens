@@ -32,6 +32,19 @@ export const homeStyles = StyleSheet.create({
   },
 });
 
+export const aboutStyles = StyleSheet.create({
+  headerImage: {
+    color: '#808080',
+    bottom: -90,
+    left: -35,
+    position: 'absolute',
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+});
+
 export const uploadsStyles = StyleSheet.create({
   headerImage: {
     color: '#808080',
