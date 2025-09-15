@@ -35,6 +35,14 @@ The app is designed with **scalability and modular architecture** in mind, suppo
 - Cloud storage for uploaded images (**AWS S3 + CloudFront CDN**)  
 - Future-ready AI and backend integrations for advanced image processing
 
+## 📱 Screens
+
+| | | |
+|---|---|---|
+| ![Splash Screen](assets/images/screens/screen-splash.jpeg) | ![Home Screen](assets/images/screens/screen-home.jpeg) | ![About Screen](assets/images/screens/screen-about.jpeg) |
+| ![Uploads Screen](assets/images/screens/screen-uploads.jpeg) | ![Loading Screen](assets/images/screens/screen-loading.jpeg) | ![Analysis Screen](assets/images/screens/screen-analysis.jpeg) |
+| ![Explicit Content Screen](assets/images/screens/screen-explicit-content.jpeg) | ![Content Guidelines Section](assets/images/screens/screen-content-guidelines.jpeg) |  |
+
 ## ⚡ Getting Started
 
 ### 1. Clone the repo
