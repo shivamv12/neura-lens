@@ -70,14 +70,6 @@ Or, to run using a tunnel (useful for testing on a device over the internet):
 ```bash
 npx expo start --tunnel -c
 ```
-### 3. Run the app
-```bash
-npx expo start -c
-```
-or for tunnel running, you can execute below command,
-```bash
-npx expo start --tunnel -c
-```
 After the application boots:
 - **iOS / Android:** Scan the QR code in Expo Go to run the app on your device.
 - **Web:** Press `w` in the terminal to open the app in your browser.
