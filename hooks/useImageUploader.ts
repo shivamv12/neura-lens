@@ -66,11 +66,9 @@ export const useImageUpload = () => {
         } as any);
 
     if (!result.canceled) {
+      // force MIME type to JPEG
+      const type = "image/jpeg";
       const uri = result.assets[0].uri;
-      const type =
-        result.assets[0].type === "image"
-          ? result.assets[0].mimeType!
-          : "image/png";
 
       setImageUri(uri);
       await handleUpload(uri, type);
@@ -87,7 +85,7 @@ export const useImageUpload = () => {
       const blob = await (await fetch(compressed.uri)).blob();
       await uploadToS3(preSignedUrl, blob, type);
 
-      const { deviceId, deviceType, userIp } = await getDeviceMetadata();
+      const { deviceUniqueId, deviceType, userIp } = await getDeviceMetadata();
 
       // Notify backend and capture its response (with analysis)
       const response = await notifyUploadComplete({
@@ -96,7 +94,7 @@ export const useImageUpload = () => {
         size: blob.size,
         width: compressed.width,
         height: compressed.height,
-        deviceId,
+        deviceId: deviceUniqueId,
         userIp,
         deviceType,
       });

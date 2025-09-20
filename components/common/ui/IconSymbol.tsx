@@ -54,6 +54,9 @@ const MAPPING = {
   'magnifyingglass.circle.fill': 'search', // alternative for detection
   'search': 'search',
   'search.sparkle': 'star',
+
+  // Hourglass
+  'hourglass': 'hourglass-top', // mapped to MaterialIcons equivalent
 } as IconMapping;
 
 /**

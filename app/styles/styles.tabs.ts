@@ -56,4 +56,51 @@ export const uploadsStyles = StyleSheet.create({
     flexDirection: 'row',
     gap: 8,
   },
+  // headerImage: {
+  //   marginTop: 50,
+  //   opacity: 0.3,
+  // },
+  uploadRow: {
+    justifyContent: 'space-between', // optional
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 12,
+    marginHorizontal: -10,
+    marginBottom: 12,
+    borderRadius: 10,
+    backgroundColor: '#f7f7f7',
+    shadowColor: '#000',
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
+  },
+  uploadRowImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 6,
+    backgroundColor: '#eee',
+    marginRight: 10,
+  },
+  uploadRowContent: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  uploadFilename: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#222',
+  },
+  uploadTime: {
+    fontSize: 12,
+    color: '#888',
+    marginTop: -5,
+  },
+  uploadStatus: {
+    fontSize: 12,
+    fontWeight: '600',
+    marginRight: 12,
+    minWidth: 60,
+    textAlign: 'right',
+  },
 });
